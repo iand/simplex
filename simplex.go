@@ -87,23 +87,23 @@ func dot4d(g [4]int, x, y, z, w float64) float64 {
 }
 
 // Noise2D provides simplex noise in two dimensions
-func Noise2D(xin, yin float64) float64 {
+func Noise2D(x, y float64) float64 {
 	// Noise contributions from the three corners
 	var n0, n1, n2 float64
 
 	// Skew the input space to determine which simplex cell we're in
 	F2 := 0.5 * (math.Sqrt(3.0) - 1.0)
-	s := (xin + yin) * F2
+	s := (x + y) * F2
 
-	i := fastfloor(xin + s)
-	j := fastfloor(yin + s)
+	i := fastfloor(x + s)
+	j := fastfloor(y + s)
 
 	G2 := (3.0 - math.Sqrt(3.0)) / 6.0
 	t := float64(i+j) * G2
 	X0 := float64(i) - t
 	Y0 := float64(j) - t
-	x0 := xin - X0
-	y0 := yin - Y0
+	x0 := x - X0
+	y0 := y - Y0
 
 	// For the 2D case, the simplex shape is an equilateral triangle.
 	// Determine which simplex we are in.
@@ -164,15 +164,15 @@ func Noise2D(xin, yin float64) float64 {
 }
 
 // Noise3D provides simplex noise in three dimensions
-func Noise3D(xin, yin, zin float64) float64 {
+func Noise3D(x, y, z float64) float64 {
 	// Noise contributions from the four corners
 	var n0, n1, n2, n3 float64
 
 	F3 := 1.0 / 3.0
-	s := (xin + yin + zin) * F3
-	i := fastfloor(xin + s)
-	j := fastfloor(yin + s)
-	k := fastfloor(zin + s)
+	s := (x + y + z) * F3
+	i := fastfloor(x + s)
+	j := fastfloor(y + s)
+	k := fastfloor(z + s)
 
 	G3 := 1.0 / 6.0
 
@@ -181,9 +181,9 @@ func Noise3D(xin, yin, zin float64) float64 {
 	Y0 := float64(j) - t
 	Z0 := float64(k) - t
 
-	x0 := xin - X0
-	y0 := yin - Y0
-	z0 := zin - Z0
+	x0 := x - X0
+	y0 := y - Y0
+	z0 := z - Z0
 
 	var i1, j1, k1 int
 	var i2, j2, k2 int
