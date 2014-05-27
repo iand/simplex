@@ -2,6 +2,8 @@
 Package simplex provides simplex noise functions.
 
 Pretty much a straight port from code in http://staffwww.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf
+
+This implementation is free and unencumbered software released into the public domain.
 */
 package simplex
 
